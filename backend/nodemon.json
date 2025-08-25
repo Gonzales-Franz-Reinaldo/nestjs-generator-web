@@ -1,0 +1,11 @@
+{
+  "watch": ["src/**/*", "server.js"],
+  "ext": "js,ts,json",
+  "ignore": [
+    "generated-projects/**/*",
+    "node_modules/**/*",
+    "dist/**/*",
+    "*.log"
+  ],
+  "exec": "node server.js"
+}
