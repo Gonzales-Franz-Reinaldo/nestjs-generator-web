@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Trash2, RefreshCw, FolderOpen, Calendar, HardDrive } from 'lucide-react';
+import { Download, RefreshCw, FolderOpen, Calendar, HardDrive } from 'lucide-react';
 import { GeneratedProjectInfo } from '../types';
 import toast from 'react-hot-toast';
 

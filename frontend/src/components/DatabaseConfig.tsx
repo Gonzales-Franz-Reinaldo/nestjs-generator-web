@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, TestTube, CheckCircle, XCircle, Loader } from 'lucide-react';
+import { TestTube, CheckCircle, XCircle, Loader } from 'lucide-react';
 import { DatabaseConfig as DBConfig } from '../types';
 import { apiService } from '../services/api';
 import toast from 'react-hot-toast';

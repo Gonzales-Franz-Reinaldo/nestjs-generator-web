@@ -1,5 +1,5 @@
 import React from 'react';
-import { Folder, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { ProjectConfig as ProjConfig } from '../types';
 
 interface ProjectConfigProps {

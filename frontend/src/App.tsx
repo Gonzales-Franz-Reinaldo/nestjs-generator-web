@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { DatabaseSelector } from './components/DatabaseSelector';
 import { DatabaseConfig } from './components/DatabaseConfig';
 import { ProjectConfig } from './components/ProjectConfig';
