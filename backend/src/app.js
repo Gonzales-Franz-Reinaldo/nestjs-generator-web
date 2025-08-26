@@ -6,8 +6,6 @@ const path = require('path');
 const databaseRoutes = require('./routes/database');
 const generatorRoutes = require('./routes/generator');
 
-const encryptedAuditRoutes = require('./routes/encrypted-audit');
-
 const app = express();
 
 // Middlewares globales
@@ -36,7 +34,6 @@ app.use('/downloads', express.static(path.join(__dirname, '../generated-projects
 // Rutas principales
 app.use('/api/database', databaseRoutes);
 app.use('/api/generator', generatorRoutes);
-app.use('/api/encrypted-audit', encryptedAuditRoutes);
 
 // Ruta de salud
 app.get('/api/health', (req, res) => {
