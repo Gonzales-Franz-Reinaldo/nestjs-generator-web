@@ -9,7 +9,7 @@ const generatorService = require('./src/services/generator.service');
 // Inicializar limpieza automática de proyectos antiguos
 generatorService.startCleanupSchedule();
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3004;
 
 // Crear directorio para proyectos generados si no existe
 const generatedProjectsDir = path.join(__dirname, 'generated-projects');
