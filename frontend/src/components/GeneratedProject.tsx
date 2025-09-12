@@ -18,7 +18,6 @@ export const GeneratedProject: React.FC<GeneratedProjectProps> = ({
 
     const handleDownload = async (project: GeneratedProjectInfo) => {
         try {
-            // ✅ Usar sessionId directamente
             await onDownload(project.sessionId);
             toast.success(`📥 Descargando ${project.name}...`);
         } catch (error) {

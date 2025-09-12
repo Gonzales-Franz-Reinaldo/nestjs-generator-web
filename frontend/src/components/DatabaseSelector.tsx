@@ -4,13 +4,13 @@ import { Database, Server } from 'lucide-react';
 interface DatabaseSelectorProps {
     selectedType: 'postgresql' | 'mysql';
     onTypeChange: (type: 'postgresql' | 'mysql') => void;
-    disabled?: boolean; // ✅ AGREGAR prop faltante
+    disabled?: boolean; 
 }
 
 export const DatabaseSelector: React.FC<DatabaseSelectorProps> = ({
     selectedType,
     onTypeChange,
-    disabled = false // ✅ AGREGAR default value
+    disabled = false 
 }) => {
     return (
         <div className="space-y-4">

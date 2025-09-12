@@ -147,7 +147,7 @@ export function useGenerator() {
         }
     }, [databaseConfig, projectConfig, updateStatus]);
 
-    const downloadProject = useCallback(async (sessionId: string) => { // ✅ Cambiar parámetro
+    const downloadProject = useCallback(async (sessionId: string) => { 
         try {
             const blob = await apiService.downloadProject(sessionId);
 

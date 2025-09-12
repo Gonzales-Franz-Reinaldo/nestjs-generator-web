@@ -145,7 +145,7 @@ function App() {
                         <GenerationProgress status={generationStatus} />
                         <GeneratedProject
                             projects={generatedProjects}
-                            onDownload={(sessionId) => downloadProject(sessionId)} // ✅ Cambiar aquí
+                            onDownload={(sessionId) => downloadProject(sessionId)} 
                             onRefresh={loadGeneratedProjects}
                         />
                     </div>

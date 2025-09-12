@@ -54,7 +54,7 @@ router.post('/generate', async (req, res) => {
                 downloadUrl: `/api/generator/download/${result.sessionId}`,
                 size: result.size,
                 createdAt: new Date().toISOString(),
-                sessionId: result.sessionId // ✅ AGREGAR esta línea
+                sessionId: result.sessionId 
             }
         });
     } catch (error) {

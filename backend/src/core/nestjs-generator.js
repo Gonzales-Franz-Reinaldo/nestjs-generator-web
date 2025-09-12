@@ -1412,7 +1412,6 @@ export interface AuthFieldMapping {
       const roleModuleName = `${roleTableClass}Module`;
       const userRoleModuleName = `${userRoleTableClass}Module`;
 
-      // ✅ EVITAR DUPLICACIÓN: Solo agregar si no es el mismo módulo
       if (authConfig.roleTable.name !== userStructure.tableName) {
         moduleImports += `\nimport { ${roleModuleName} } from '../modules/${authConfig.roleTable.name}/${authConfig.roleTable.name}.module';`;
         modulesList += `\n    ${roleModuleName},`;
@@ -2755,7 +2754,6 @@ export class RegisterDto {
     const uniqueImports = [...new Set(imports)];
     const typeormImport = `import { ${uniqueImports.join(', ')} } from 'typeorm';`;
 
-    // ✅ CORREGIR en generateEntity()
     const columnsCode = table.columns.map(col => {
       let decorators = [];
 
@@ -2773,7 +2771,6 @@ export class RegisterDto {
           columnOptions.push(`type: '${typeormType}'`);
         }
 
-        // ✅ CORRECCIÓN CRÍTICA: Respetrar nullable real de la BD
         if (col.nullable) {
           columnOptions.push('nullable: true');
         } else {
@@ -2793,7 +2790,6 @@ export class RegisterDto {
         decorators.push(`@Column(${optionsStr})`);
       }
 
-      // ✅ CORRECCIÓN: Tipo TypeScript debe incluir null si es nullable
       const tsType = col.nullable ? `${col.type} | null` : col.type;
 
       return `  ${decorators.join('\n  ')}\n  ${col.name}: ${tsType};`;
@@ -2809,7 +2805,7 @@ ${columnsCode}
 
   // Agregar `return` en los métodos:
   shouldAddLength(dbType) {
-    if (!dbType) return false; // ✅ AGREGAR return
+    if (!dbType) return false; 
 
     const dbTypeLower = dbType.toLowerCase();
 
@@ -2824,7 +2820,7 @@ ${columnsCode}
     ];
 
     if (typesWithoutLength.includes(dbTypeLower)) {
-      return false; // ✅ AGREGAR return
+      return false; 
     }
 
     const typesWithLength = [
@@ -2835,11 +2831,10 @@ ${columnsCode}
   }
 
   normalizeDefault(dbDefault, tsType) {
-    if (!dbDefault) return undefined; // ✅ AGREGAR return
-
+    if (!dbDefault) return undefined; 
     let val = dbDefault.trim();
 
-    if (val.includes('nextval') || val.includes('auto_increment')) return undefined; // ✅ AGREGAR return
+    if (val.includes('nextval') || val.includes('auto_increment')) return undefined; 
 
     // Remover paréntesis externos
     while (val.startsWith('(') && val.endsWith(')')) {
@@ -2853,25 +2848,25 @@ ${columnsCode}
 
     // Funciones de fecha
     if (/^(now\(\)|current_timestamp|current_timestamp\(\))$/i.test(val)) {
-      return undefined; // ✅ AGREGAR return
+      return undefined; 
     }
 
     // Booleanos
     if (/^(true|false)$/i.test(val)) {
-      return val.toLowerCase(); // ✅ AGREGAR return
+      return val.toLowerCase(); 
     }
 
     // Números
     if (/^-?\d+(\.\d+)?$/.test(val)) {
-      return val; // ✅ AGREGAR return
+      return val; 
     }
 
     // Strings (remover comillas)
     if (/^['"].*['"]$/.test(val)) {
-      return val; // ✅ AGREGAR return
+      return val; 
     }
 
-    if (val.toLowerCase() === 'null') return undefined; // ✅ AGREGAR return
+    if (val.toLowerCase() === 'null') return undefined; 
 
     return undefined;
   }

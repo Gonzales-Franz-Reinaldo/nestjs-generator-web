@@ -6,13 +6,13 @@ import type {
     GeneratedProjectInfo
 } from '../types';
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = 'http://localhost:3004/api';
 
 class ApiService {
     private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
         const url = `${API_BASE_URL}${endpoint}`;
         
-        console.log(`🔗 API Request: ${options.method || 'GET'} ${url}`); // ✅ Debug log
+        console.log(`🔗 API Request: ${options.method || 'GET'} ${url}`);
 
         const config: RequestInit = {
             headers: {
@@ -25,7 +25,7 @@ class ApiService {
         try {
             const response = await fetch(url, config);
             
-            console.log(`📡 Response status: ${response.status}`); // ✅ Debug log
+            console.log(`📡 Response status: ${response.status}`); 
 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({ 
@@ -35,7 +35,7 @@ class ApiService {
             }
 
             const data = await response.json();
-            console.log(`✅ Response data:`, data); // ✅ Debug log
+            console.log(`✅ Response data:`, data);
             return data;
         } catch (error) {
             console.error(`❌ API Error: ${endpoint}`, error);
